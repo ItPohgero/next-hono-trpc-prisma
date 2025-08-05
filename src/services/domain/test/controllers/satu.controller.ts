@@ -1,9 +1,9 @@
 import type { Context } from "hono";
-import prisma from "@/services/lib/prisma";
+import {GetAllUsecase} from "@/services/domain/test/usecases/get-all.usecase";
 
 export const TestSatuController = async (c: Context) => {
 	try {
-		const results = await prisma.user.findMany();
+		const results = await GetAllUsecase();
 		return c.json(results, 200);
 	} catch (error) {
 		return c.json(
