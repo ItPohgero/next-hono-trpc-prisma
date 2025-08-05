@@ -6,7 +6,28 @@
 		"useIgnoreFile": false
 	},
 	"files": {
-		"ignoreUnknown": false
+		"ignoreUnknown": false,
+		"maxSize": 5242880,
+		"includes": [
+			"src/**/*",
+			"app/**/*",
+			"pages/**/*",
+			"components/**/*",
+			"lib/**/*",
+			"utils/**/*",
+			"hooks/**/*",
+			"types/**/*",
+			"styles/**/*",
+			"public/**/*",
+			"*.ts",
+			"*.tsx",
+			"*.js",
+			"*.jsx",
+			"*.json",
+			"*.css",
+			"*.scss",
+			"*.md"
+		]
 	},
 	"formatter": {
 		"enabled": true,
