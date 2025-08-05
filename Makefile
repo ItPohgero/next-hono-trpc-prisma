@@ -1,4 +1,4 @@
-.PHONY: format format-files lint lint-files check check-files
+.PHONY: format format-files lint lint-files check check-files prisma-generate prisma-migrate-dev prisma-studio seed
 
 # Format all files
 format:
@@ -23,3 +23,18 @@ check:
 # Check specific files: make check-files files="src/App.tsx"
 check-files:
 	bunx biome check --write $(files)
+
+# Prisma: generate client
+prisma-generate:
+	bunx prisma generate
+
+# Prisma: run migrations in development
+prisma-migrate-dev:
+	bunx prisma migrate dev
+
+# Prisma: open Prisma Studio
+prisma-studio:
+	bunx prisma studio
+
+seed:
+     bun run prisma/seed.ts

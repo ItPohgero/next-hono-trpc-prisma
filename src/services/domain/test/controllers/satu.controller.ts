@@ -1,17 +1,10 @@
 import type { Context } from "hono";
+import prisma from "@/services/lib/prisma";
 
 export const TestSatuController = async (c: Context) => {
 	try {
-		return c.json(
-			{
-				message: "Hello Hono API Test! DARI API TEST SATU",
-				data: {
-					name: "Hono",
-					version: "2.0.0",
-				},
-			},
-			200,
-		);
+		const results = await prisma.user.findMany();
+		return c.json(results, 200);
 	} catch (error) {
 		return c.json(
 			{

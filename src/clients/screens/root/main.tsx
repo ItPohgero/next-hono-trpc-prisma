@@ -4,11 +4,11 @@ import { Fragment } from "react";
 import { Button } from "@/clients/components/ui/button";
 
 export default function RootMainScreen() {
-	const { message } = useMain();
+	const { users } = useMain();
 	return (
 		<Fragment>
 			<Button>Button Components</Button>
-			<div>{message && <div>{message}</div>}</div>
+			<pre>{JSON.stringify(users, undefined, 2)}</pre>
 		</Fragment>
 	);
 }

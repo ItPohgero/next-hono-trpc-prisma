@@ -1,19 +1,20 @@
 "use client";
 import { useEffect, useState } from "react";
 import { trpc } from "@/services/rpc/client";
+import { User } from "@prisma/client";
 
 export function useMain() {
-	const [message, setMessage] = useState<string | null>(null);
+	const [users, setUsers] = useState<User[]>([]);
 	useEffect(() => {
 		(async () => {
 			try {
 				const res = await trpc.api.test.satu.$get();
-				const data = await res.json();
-				setMessage(data.message);
+				const result = await res.json();
+				setUsers(result as User[]);
 			} catch {
-				setMessage("Error fetching message");
+				setUsers([]);
 			}
 		})();
 	}, []);
-	return { message };
+	return { users };
 }
