@@ -1,10 +1,9 @@
 "use client";
-import { trpc } from "@/services/rpc/client";
 import { useEffect, useState } from "react";
+import { trpc } from "@/services/rpc/client";
 
-export default function Home() {
+export function useMain() {
 	const [message, setMessage] = useState<string | null>(null);
-
 	useEffect(() => {
 		(async () => {
 			try {
@@ -14,8 +13,7 @@ export default function Home() {
 			} catch {
 				setMessage("Error fetching message");
 			}
-		})()
+		})();
 	}, []);
-
-	return <div>{message && <div>{message}</div>}</div>;
+	return { message };
 }
